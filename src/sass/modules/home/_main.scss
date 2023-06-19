@@ -1,0 +1,95 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Pixel";
+    src: url("../../../../public/fonts/PressStart2P-Regular.ttf");
+}
+
+body{
+    font-family: "Pixel", sans-serif;
+    background-image: url("../images/home-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+button{
+    font-family: "Pixel", sans-serif;
+    cursor: pointer;
+}
+
+//---------- Start Project --------
+
+.monster{
+    height: 350px;
+    width: 350px;
+}
+
+.first-phase{
+    .pokemon-balls{
+        display: flex;
+        justify-content: center;
+        padding-top: 1em;
+        .d-none{
+            display: none;
+        }
+        .ball{
+            margin-inline: 1.5rem;
+        }
+        &:hover{
+            cursor: pointer;
+            // animation: ballAnimation 1s forwards;
+        }
+    }
+
+    .pokemon-monster{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+        .start-game{
+            font-size: 1.2rem;
+            background-color: white;
+            border:none;
+            padding: 1em 1.2em;
+            border-radius: .5rem;
+        }
+    }
+
+    .d-none{
+        display: none;
+    }
+    
+}
+
+
+
+
+//-------- animation --------
+
+.ball-scale{
+    animation: ballAnimation 1s;
+}
+
+@keyframes ballAnimation {
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 1.2;
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+// -------- default style -----

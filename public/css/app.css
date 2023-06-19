@@ -1,3 +1,81 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+@font-face {
+  font-family: "Pixel";
+  src: url("../../../../public/fonts/PressStart2P-Regular.ttf");
+}
+body {
+  font-family: "Pixel", sans-serif;
+  background-image: url("../images/home-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  font-family: "Pixel", sans-serif;
+  cursor: pointer;
+}
+
+.monster {
+  height: 350px;
+  width: 350px;
+}
+
+.first-phase .pokemon-balls {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+.first-phase .pokemon-balls .d-none {
+  display: none;
+}
+.first-phase .pokemon-balls .ball {
+  margin-inline: 1.5rem;
+}
+.first-phase .pokemon-balls:hover {
+  cursor: pointer;
+}
+.first-phase .pokemon-monster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+.first-phase .pokemon-monster .start-game {
+  font-size: 1.2rem;
+  background-color: white;
+  border: none;
+  padding: 1em 1.2em;
+  border-radius: 0.5rem;
+}
+.first-phase .d-none {
+  display: none;
+}
+
+.ball-scale {
+  animation: ballAnimation 1s;
+}
+
+@keyframes ballAnimation {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 1;
+  }
+}
 
 /*# sourceMappingURL=app.css.map */
