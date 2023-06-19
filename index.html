@@ -8,7 +8,7 @@
 </head>
 <body>
     <!--  Beginning of the game  -->
-   <div class="first-phase">
+   <div id="firstPhase" class="first-phase">
     <div class="pokemon-balls">
         <img id="bulbasaur" class="ball" src="./public/images/pokeball.png" alt="bulbasaur">
         <img id="charmander" class="ball" src="./public/images/pokeball.png" alt="charmander">
@@ -18,7 +18,45 @@
         <button id="startGame" class="start-game d-none">START</button>
     </div>
    </div>
-   <!--  Beginning of the game  -->
+   <!--  Battle field  -->
+  <div id="battleContainer" class="battle-container d-none">
+    <div class="battle-field">
+        <div class="fight-field">
+            <!--  Monster and Villai health bar -->
+            <div class="hero-health">
+                <h2>PIDGEOTTO</h2>
+                <div class="health-bar">
+                    <h3>HP</h3>
+                    <div class="progress-border">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="villain-health">
+                <h2>SQUIRTLE</h2>
+                <div class="health-bar">
+                    <h3>HP</h3>
+                    <div class="progress-border">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <!--  Monster hero and Villain -->
+            <div class="monster-hero">
+                <img class="hero" src="" alt="hero">
+            </div>
+            <div class="monster-villain">
+                <img class="villain" src="./public/images/pidgeotto-animation.gif" alt="villain">
+            </div>
+        </div>
+        <div class="attack-list">
+            <button id="tackleAttack" class="attack">TACKLE</button>
+            <button id="tailWhipeAttack" class="attack">TAIL WHIPE</button>
+            <button class="attack">EMPTY</button>
+            <button class="attack">EMPTY</button>
+        </div>
+      </div>
+  </div>
     <script src="./public/js/app.js"></script>
 </body>
 </html>

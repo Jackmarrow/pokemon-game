@@ -10,12 +10,6 @@
 }
 body {
   font-family: "Pixel", sans-serif;
-  background-image: url("../images/home-background.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  overflow: hidden;
 }
 
 button {
@@ -23,18 +17,18 @@ button {
   cursor: pointer;
 }
 
-.monster {
-  height: 350px;
-  width: 350px;
+.first-phase {
+  background-image: url("../images/home-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
 }
-
 .first-phase .pokemon-balls {
   display: flex;
   justify-content: center;
   padding-top: 1em;
-}
-.first-phase .pokemon-balls .d-none {
-  display: none;
 }
 .first-phase .pokemon-balls .ball {
   margin-inline: 1.5rem;
@@ -51,6 +45,10 @@ button {
   top: 55%;
   transform: translate(-50%, -50%);
 }
+.first-phase .pokemon-monster .monster {
+  height: 350px;
+  width: 350px;
+}
 .first-phase .pokemon-monster .start-game {
   font-size: 1.2rem;
   background-color: white;
@@ -60,6 +58,108 @@ button {
 }
 .first-phase .d-none {
   display: none;
+}
+
+.battle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.battle-container .battle-field {
+  width: 800px;
+}
+.battle-container .battle-field .fight-field {
+  background-image: url("../images/Grassy-Field.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+}
+.battle-container .battle-field .fight-field .hero-health {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background-color: #fdfedc;
+  border: 7px solid #2d4e3b;
+  padding: 1em 1.5em;
+  width: 350px;
+  border-radius: 2rem 1rem 2rem 1rem;
+}
+.battle-container .battle-field .fight-field .hero-health h2 {
+  margin-bottom: 1.5rem;
+}
+.battle-container .battle-field .fight-field .hero-health .health-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.battle-container .battle-field .fight-field .hero-health .health-bar .progress-border {
+  width: 250px;
+  height: 25px;
+  background-color: white;
+  border-radius: 1rem;
+  border: 3px solid #2d4e3b;
+}
+.battle-container .battle-field .fight-field .hero-health .health-bar .progress-border .progress-bar {
+  border-radius: 1rem;
+  background-color: #56ffa0;
+  width: 0%;
+  height: 100%;
+}
+.battle-container .battle-field .fight-field .villain-health {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background-color: #fdfedc;
+  border: 7px solid #2d4e3b;
+  padding: 1em 1.5em;
+  width: 350px;
+  border-radius: 2rem 1rem 2rem 1rem;
+}
+.battle-container .battle-field .fight-field .villain-health h2 {
+  margin-bottom: 1.5rem;
+}
+.battle-container .battle-field .fight-field .villain-health .health-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.battle-container .battle-field .fight-field .villain-health .health-bar .progress-border {
+  width: 250px;
+  height: 25px;
+  background-color: white;
+  border-radius: 1rem;
+  border: 3px solid #2d4e3b;
+}
+.battle-container .battle-field .fight-field .villain-health .health-bar .progress-border .progress-bar {
+  border-radius: 1rem;
+  background-color: #56ffa0;
+  width: 50%;
+  height: 100%;
+}
+.battle-container .battle-field .fight-field .hero {
+  width: 180px;
+  position: absolute;
+  bottom: 0;
+  left: 12%;
+}
+.battle-container .battle-field .fight-field .villain {
+  width: 250px;
+  position: absolute;
+  right: 9%;
+  top: -5%;
+}
+.battle-container .battle-field .attack-list {
+  height: 30vh;
+  border: 1rem solid #706880;
+  background-color: #f8f8f8;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.battle-container .battle-field .attack-list .attack {
+  font-size: 1.7rem;
+  padding: 1em 1em;
 }
 
 .ball-scale {
@@ -76,6 +176,33 @@ button {
   100% {
     scale: 1;
   }
+}
+.hero-enter {
+  animation: heroEnter 1.5s;
+}
+
+@keyframes heroEnter {
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+.villain-enter {
+  animation: villainEnter 1.5s;
+}
+
+@keyframes villainEnter {
+  from {
+    transform: translateX(150%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+.d-none {
+  display: none;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -11,12 +11,6 @@
 
 body{
     font-family: "Pixel", sans-serif;
-    background-image: url("../images/home-background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    overflow: hidden;
 }
 
 button{
@@ -26,19 +20,17 @@ button{
 
 //---------- Start Project --------
 
-.monster{
-    height: 350px;
-    width: 350px;
-}
-
 .first-phase{
+    background-image: url("../images/home-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
     .pokemon-balls{
         display: flex;
         justify-content: center;
         padding-top: 1em;
-        .d-none{
-            display: none;
-        }
         .ball{
             margin-inline: 1.5rem;
         }
@@ -56,6 +48,10 @@ button{
         left: 50%;
         top: 55%;
         transform: translate(-50%, -50%);
+        .monster{
+            height: 350px;
+            width: 350px;
+        }
         .start-game{
             font-size: 1.2rem;
             background-color: white;
@@ -71,11 +67,119 @@ button{
     
 }
 
+.battle-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    .battle-field{
+        width:800px;
+
+        .fight-field{
+            background-image: url("../images/Grassy-Field.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+
+            .hero-health{
+                position: absolute;
+                top: 5%;
+                left: 5%;
+                background-color: $health-bg;
+                border: 7px solid $health-border;
+                padding: 1em 1.5em;
+                width: 350px;
+                border-radius: 2rem 1rem 2rem 1rem;
+                h2{
+                    margin-bottom: 1.5rem;
+                }
+                .health-bar{
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    .progress-border{
+                        width:250px;
+                        height: 25px;
+                        background-color: white;
+                        border-radius: 1rem;
+                        border: 3px solid $health-border;
+                        .progress-bar{
+                            border-radius: 1rem;
+                            background-color: $health-bar-color;
+                            width: 0%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+
+            .villain-health{
+                position: absolute;
+                bottom: 5%;
+                right: 5%;
+                background-color: $health-bg;
+                border: 7px solid $health-border;
+                padding: 1em 1.5em;
+                width: 350px;
+                border-radius: 2rem 1rem 2rem 1rem;
+                h2{
+                    margin-bottom: 1.5rem;
+                }
+                .health-bar{
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    .progress-border{
+                        width:250px;
+                        height: 25px;
+                        background-color: white;
+                        border-radius: 1rem;
+                        border: 3px solid $health-border;
+                        .progress-bar{
+                            border-radius: 1rem;
+                            background-color: $health-bar-color;
+                            width: 50%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            .hero{
+                width: 180px;
+                position: absolute;
+                bottom: 0;
+                left: 12%;
+            }
+
+            .villain{
+                width: 250px;
+                position: absolute;
+                right: 9%;
+                top: -5%;
+            }
+
+        }
+    
+        .attack-list{
+            height: calc(100vh - 70vh);
+            border: 1rem solid $border-color;
+            background-color: $light-gray;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            .attack{
+                font-size: 1.7rem;
+                padding: 1em 1em;
+            }
+        }
+    }
+}
 
 
 //-------- animation --------
 
+// -------- Ball scale animation -------
 .ball-scale{
     animation: ballAnimation 1s;
 }
@@ -91,5 +195,36 @@ button{
         scale: 1;
     }
 }
+// -------- Hero enter animation -------
+.hero-enter{
+    animation: heroEnter 1.5s;
+}
+
+@keyframes heroEnter{
+    from{
+        transform: translateX(-150%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+
+// -------- villain enter animation -------
+.villain-enter{
+    animation: villainEnter 1.5s;
+}
+
+@keyframes villainEnter{
+    from{
+        transform: translateX(150%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
 
 // -------- default style -----
+
+.d-none{
+    display: none;
+}
