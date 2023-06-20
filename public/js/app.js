@@ -15,6 +15,12 @@ let monsterGifs = [
 ];
 let startGame = document.querySelector("#startGame");
 let listOfAttack = document.querySelectorAll(".attack");
+let heroProgressBar = document.querySelector("#heroProgressBar");
+let villainProgressBar = document.querySelector("#villainProgressBar");
+let monsterHero = document.querySelector(".hero");
+let monsterVillain = document.querySelector(".villain");
+let heroHealthContainer = document.querySelector(".hero-health") ;
+let villainHealthContainer = document.querySelector(".villain-health");
 let indexOfMonster;
 //! ------------ Event listener -------
 
@@ -30,22 +36,39 @@ pokemonBalls.forEach((ball, index) => {
   });
 });
 
+//------------ Start the game -------
 startGame.addEventListener("click", () => {
   pickPokemonPhase.classList.add("d-none");
   battleContainer.classList.remove("d-none");
   heroEnter();
 });
 
+//------------ Pick an attack -------
 listOfAttack.forEach(attack =>{
     attack.addEventListener("click", ()=>{
         if(attack.id == "tackleAttack"){
-            console.log(tabHero[indexOfMonster]);
-            tabHero[indexOfMonster].tackle();
-            console.log(pidgeotto);
+            tabHero[indexOfMonster].tackle(pidgeotto);
+            monsterVillain.classList.add("monster-attacked");
+            monsterHero.classList.remove("monster-attacked");
+            // villainHealthContainer.classList.add("move-left-right");
+          //-------------- Villain attack ----------------
+            setTimeout(()=>{
+              monsterVillain.classList.remove("monster-attacked");
+              pidgeotto.hyperAttack(tabHero[indexOfMonster]);
+              monsterHero.classList.add("monster-attacked");
+            },2000)
+            
         } else if(attack.id == "tailWhipeAttack"){
-            tabHero[indexOfMonster].tailWhipe();
-            console.log(tabHero[indexOfMonster]);
-            console.log(pidgeotto);
+            tabHero[indexOfMonster].tailWhipe(pidgeotto);
+            monsterVillain.classList.add("monster-attacked");
+            monsterHero.classList.remove("monster-attacked");
+            // villainHealthContainer.classList.add("move-left-right");
+          //-------------- Villain attack ----------------  
+            setTimeout(()=>{
+              monsterVillain.classList.remove("monster-attacked");
+              pidgeotto.hyperAttack(tabHero[indexOfMonster]);
+              monsterHero.classList.add("monster-attacked");
+            },2000)
         }
     })
 })
@@ -69,11 +92,37 @@ function monsterPopUp(ball, index) {
 
 // ------------- Enter a hero monster to the field --------
 function heroEnter() {
-  let monsterHero = document.querySelector(".hero");
-  let monsterVillain = document.querySelector(".villain");
   monsterHero.src = monsterGifs[indexOfMonster];
+  // ----------- Hero enter animation ---------
   monsterHero.classList.add("hero-enter");
+  monsterHero.addEventListener("animationend",()=>{
+    monsterHero.classList.remove("hero-enter");
+  })
+  // ----------- Villain enter animation ----------
   monsterVillain.classList.add("villain-enter");
+  monsterVillain.addEventListener("animationend",()=>{
+    monsterVillain.classList.remove("villain-enter");
+  })
+}
+
+// ------------ Start fight ------------
+
+function controlHealthBar(target, health){
+  // console.log(health.hp);
+  if(health.hp <= 0){
+    target.style.width = `0%`;
+  }
+  else if(health.hp <= 20){
+    target.style.backgroundColor = "red";
+  }
+  else if(health.hp <= 50){
+    target.style.backgroundColor = "yellow";
+  }
+  else if(health.hp >= 100){
+    target.style.width = `100%`;
+    health.hp = 100;
+  }
+  target.style.width = `${health.hp}%`;
 }
 
 //! ------------ Class of Hero Villain ------------
@@ -87,35 +136,43 @@ class Monster{
     }
 }
 
+// ---------- Hero class -------
 class Hero extends Monster{
     constructor(name ,attack, initiative, hp){
         super(name ,attack, initiative, hp)
     }
 
-    tackle(){
-        pidgeotto.hp -= (this.attack*1.25);
+    tackle(villain){
+        villain.hp -= (this.attack*2);
+        controlHealthBar(villainProgressBar, villain);
     }
 
-    tailWhipe(){
-        this.hp += (this.hp * 0.25);
-        pidgeotto.hp -= (this.attack*0.25);
+    tailWhipe(villain){
+      villain.hp -= this.attack*0.75;
+      controlHealthBar(villainProgressBar, villain);
+      this.hp += (this.hp * 0.15);
+      controlHealthBar(heroProgressBar, this);
     }
 }
 
+// ---------- Villain class -------
 class Villain extends Monster{
     constructor(name ,attack, initiative, hp){
         super(name ,attack, initiative, hp)
     }
 
-
+    hyperAttack(hero){
+      hero.hp -= this.attack; 
+      controlHealthBar(heroProgressBar, hero);
+    }
 }
 
 //---------- hero monsters ------
-let squirtle = new Hero("squirtle", 80, 1, 300);
-let charmander = new Hero("charmander",100, 1, 300);
-let bulbasaur = new Hero("bulbasaur",70, 1, 300);
+let squirtle = new Hero("squirtle", 10, 1, 100);
+let charmander = new Hero("charmander",10, 1, 100);
+let bulbasaur = new Hero("bulbasaur",10, 1, 100);
 
 let tabHero = [bulbasaur, squirtle, charmander];
 //--------- villain monster -----
-let pidgeotto = new Villain("pidgeotto",65, 1, 500);
+let pidgeotto = new Villain("pidgeotto",15, 1, 100);
 

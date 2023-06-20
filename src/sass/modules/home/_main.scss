@@ -108,7 +108,6 @@ button{
                         .progress-bar{
                             border-radius: 1rem;
                             background-color: $health-bar-color;
-                            width: 0%;
                             height: 100%;
                         }
                     }
@@ -140,7 +139,6 @@ button{
                         .progress-bar{
                             border-radius: 1rem;
                             background-color: $health-bar-color;
-                            width: 50%;
                             height: 100%;
                         }
                     }
@@ -219,6 +217,50 @@ button{
         transform: translateX(150%);
     }
     to{
+        transform: translateX(0%);
+    }
+}
+
+// -------- attacked animation -------
+.monster-attacked{
+    animation: monsterAttacked 500ms;
+}
+
+@keyframes monsterAttacked{
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+// -------- move lef and right animation -------
+.move-left-right{
+    animation: moveLeftRight 1s;
+}
+@keyframes moveLeftRight {
+    0%{
+        transform: translateX(-15%);
+    } 
+    25%{
+        transform: translateX(15%);
+    }
+    50%{
+        transform: translateX(-15%);
+    }
+    75%{
+        transform: translateX(15%);
+    }
+    100%{
         transform: translateX(0%);
     }
 }

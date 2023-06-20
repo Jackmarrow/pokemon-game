@@ -104,7 +104,6 @@ button {
 .battle-container .battle-field .fight-field .hero-health .health-bar .progress-border .progress-bar {
   border-radius: 1rem;
   background-color: #56ffa0;
-  width: 0%;
   height: 100%;
 }
 .battle-container .battle-field .fight-field .villain-health {
@@ -135,7 +134,6 @@ button {
 .battle-container .battle-field .fight-field .villain-health .health-bar .progress-border .progress-bar {
   border-radius: 1rem;
   background-color: #56ffa0;
-  width: 50%;
   height: 100%;
 }
 .battle-container .battle-field .fight-field .hero {
@@ -198,6 +196,48 @@ button {
     transform: translateX(150%);
   }
   to {
+    transform: translateX(0%);
+  }
+}
+.monster-attacked {
+  animation: monsterAttacked 500ms;
+}
+
+@keyframes monsterAttacked {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.move-left-right {
+  animation: moveLeftRight 1s;
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(-15%);
+  }
+  25% {
+    transform: translateX(15%);
+  }
+  50% {
+    transform: translateX(-15%);
+  }
+  75% {
+    transform: translateX(15%);
+  }
+  100% {
     transform: translateX(0%);
   }
 }
